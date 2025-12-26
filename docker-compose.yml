@@ -1,0 +1,22 @@
+services:
+  content-filter:
+    build: .
+    container_name: content-filter-middleware
+    ports:
+      - "8003:8003" # API 端口
+      - "8004:8004" # WebUI 仪表板端口
+    volumes:
+      # 挂载配置文件，支持热更新
+      - ./model_mapping.json:/app/model_mapping.json:ro
+    env_file:
+      - .env
+    environment:
+      # 确保日志实时输出
+      - PYTHONUNBUFFERED=1
+    # 实时日志输出配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped

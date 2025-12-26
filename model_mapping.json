@@ -1,0 +1,10 @@
+{
+    "gpt-4": {
+        "normal": "gpt-4",
+        "fallback": "gpt-4"
+    },
+    "gpt-3.5-turbo": {
+        "normal": "gpt-3.5-turbo",
+        "fallback": "gpt-3.5-turbo"
+    }
+}
